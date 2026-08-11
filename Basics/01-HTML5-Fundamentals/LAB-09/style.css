@@ -1,0 +1,189 @@
+/* ---------- Tokens ---------- */
+:root {
+  --bg: #0D0F14;
+  --surface: #161923;
+  --border: #262B3A;
+  --text: #E4E6EB;
+  --muted: #8890A6;
+  --label: #565F73;
+  --accent: #7EE787;
+  --accent-dim: #4E9A5B;
+
+  --mono: "JetBrains Mono", "Fira Code", ui-monospace, Menlo, monospace;
+  --sans: "Inter", -apple-system, "Segoe UI", sans-serif;
+
+  --maxw: 720px;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap');
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--sans);
+  line-height: 1.6;
+  padding: 0 1.25rem 4rem;
+}
+
+/* ---------- Header ---------- */
+header {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 3.5rem 0 1.5rem;
+}
+
+h1 {
+  font-family: var(--mono);
+  font-size: clamp(1.6rem, 5vw, 2.2rem);
+  font-weight: 700;
+  margin: 0 0 1.25rem;
+  color: var(--text);
+}
+
+h1::after {
+  content: "";
+  display: inline-block;
+  width: 0.55ch;
+  height: 1em;
+  background: var(--accent);
+  margin-left: 0.15em;
+  vertical-align: -0.1em;
+  animation: blink 1.1s steps(1) infinite;
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0;
+}
+
+nav a {
+  font-family: var(--mono);
+  font-size: 0.85rem;
+  color: var(--muted);
+  text-decoration: none;
+  padding: 0.4rem 0.8rem;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  transition: color 0.15s ease, border-color 0.15s ease;
+}
+
+nav a:hover,
+nav a:focus-visible {
+  color: var(--accent);
+  border-color: var(--accent-dim);
+  outline: none;
+}
+
+/* ---------- Main / Sections ---------- */
+main {
+  max-width: var(--maxw);
+  margin: 0 auto;
+}
+
+section {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 1.75rem;
+  margin-top: 1.5rem;
+}
+
+h2 {
+  font-family: var(--mono);
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--accent);
+  margin: 0 0 1.1rem;
+}
+
+h2::before {
+  content: "$ ";
+  color: var(--accent-dim);
+}
+
+h3 {
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--label);
+  margin: 1.25rem 0 0.6rem;
+}
+
+h3:first-of-type { margin-top: 0; }
+
+p { color: var(--text); margin: 0 0 0.9rem; }
+p:last-child { margin-bottom: 0; }
+
+/* ---------- Bio image ---------- */
+#bio img {
+  width: 100%;
+  max-width: 220px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  display: block;
+  margin-bottom: 1.1rem;
+}
+
+/* ---------- Lists ---------- */
+ul, ol {
+  margin: 0;
+  padding-left: 1.25rem;
+}
+
+li { margin-bottom: 0.4rem; color: var(--text); }
+li:last-child { margin-bottom: 0; }
+
+ul { list-style: none; padding-left: 0; }
+
+ul li::before {
+  content: "› ";
+  color: var(--accent-dim);
+  font-family: var(--mono);
+}
+
+ol li::marker {
+  font-family: var(--mono);
+  color: var(--accent-dim);
+}
+
+/* ---------- Footer ---------- */
+footer {
+  max-width: var(--maxw);
+  margin: 2.5rem auto 0;
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  color: var(--label);
+}
+
+/* ---------- Accessibility ---------- */
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  h1::after { animation: none; opacity: 1; }
+  html { scroll-behavior: auto; }
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 480px) {
+  section { padding: 1.25rem; }
+  header { padding-top: 2.5rem; }
+}
